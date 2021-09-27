@@ -16,10 +16,11 @@
 }
 .piece {
     /*#2d2b29;*/
+    border: 2px solid black;
     margin: 10px;
     border-radius: 50%;
-    height: 64px;
-    width: 64px;
+    height: 54px;
+    width: 54px;
 }
 .light-piece {
     background-color: #f8f8f8;
@@ -27,4 +28,7 @@
 }
 .dark-piece {
     background-color: #565352;
+}
+.test {
+    display: inline-block;
 }
