@@ -1,6 +1,9 @@
 # Checkers
 
 Checkers board game
+## Team Members
+- Ratiu Alex
+- Durcau Paul
 
 ## TODO
 
