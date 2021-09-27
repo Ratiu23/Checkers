@@ -2,8 +2,8 @@
 
 Checkers board game
 ## Team Members
-- Ratiu Alex
-- Durcau Paul
+- [Ratiu Alex](https://github.com/Ratiu23)
+- [Durcau Paul](https://github.com/PaulDurcau94)
 
 ## TODO
 
@@ -13,6 +13,6 @@ Checkers board game
 - [ ] saving data from current game on server (moves or positions) for different users.
 
 Phase I:
-- [ ] main board layout;
-- [ ] defining and displaying pieces;
+- [ X] main board layout;
+- [ X] defining and displaying pieces;
 - [ ] moving the pieces with click.
