@@ -5,10 +5,11 @@ Checkers board game
 - [Ratiu Alex](https://github.com/Ratiu23)
 - [Durcau Paul](https://github.com/PaulDurcau94)
 
-## TODO
-
 ## Live Preview
-- [Demo](Ratiu23.github.io/Checkers)
+- [Demo](https://Ratiu23.github.io/Checkers)
+
+
+## TODO
 
 - [ ] rules and restrictions;
 - [ ] types of checkers;
