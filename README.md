@@ -8,7 +8,7 @@ Checkers board game
 ## TODO
 
 ## Live Preview
-- [Demo](https://github.com/Ratiu23/Checkers)
+- [Demo](ratiu23.github.io/Checkers)
 
 - [ ] rules and restrictions;
 - [ ] types of checkers;
