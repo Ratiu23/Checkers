@@ -1,0 +1,30 @@
+.row {
+    
+}
+.column {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    
+}
+.a {
+    background-color: #f0d9b5;
+    
+}
+.b {
+    background-color: #b58863;
+}
+.piece {
+    /*#2d2b29;*/
+    margin: 10px;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+}
+.light-piece {
+    background-color: #f8f8f8;
+
+}
+.dark-piece {
+    background-color: #565352;
+}
