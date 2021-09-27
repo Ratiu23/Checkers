@@ -13,6 +13,6 @@ Checkers board game
 - [ ] saving data from current game on server (moves or positions) for different users.
 
 Phase I:
-- [ X] main board layout;
-- [ X] defining and displaying pieces;
+- [x] main board layout;
+- [x] defining and displaying pieces;
 - [ ] moving the pieces with click.
