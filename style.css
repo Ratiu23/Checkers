@@ -1,10 +1,18 @@
+body {
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
 .row {
-    
+
 }
 .column {
     width: 80px;
     height: 80px;
     display: inline-block;
+    margin: -2px;
     
 }
 .a {
@@ -12,11 +20,10 @@
     
 }
 .b {
-    background-color: #b58863;s
+    background-color: #b58863;
 }
 .piece {
-    /*#2d2b29;*/
-    border: 2px solid black;
+    border: 2px solid #2d2b29;
     margin: 10px;
     border-radius: 50%;
     height: 54px;
