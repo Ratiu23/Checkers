@@ -10,8 +10,14 @@ function drawEmptyTable() {
     document.getElementById("board-layout").innerHTML=s;
 }
 
-drawEmptyTable();
+function drawPieces() {
+    drawEmptyTable();
+    document.querySelector('.b').innerHTML=`<div class="piece light-piece"></div>`;
+}
 
-document.querySelector('.b').innerHTML=`<div class="piece light-piece"></div>`;
+drawPieces();
+
+
+
 
 
