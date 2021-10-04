@@ -15,20 +15,19 @@ function drawEmptyTable() {
 function drawPieces() {
   drawEmptyTable();
   const light = `<div class="piece light-piece"></div>`;
-  document.querySelector("#h8").innerHTML = light;
-  document.querySelector("#h6").innerHTML = light;
-  document.querySelector("#h4").innerHTML = light;
-  document.querySelector("#h2").innerHTML = light;
+  addPiece("#h8", "light");
+  addPiece("#h6", "light");
+  addPiece("#h4", "light");
+  addPiece("#h2", "light");
   addPiece("#g7", "light");
   addPiece("#g5", "light");
   addPiece("#g3", "light");
   addPiece("#g1", "light");
 
-  const dark = `<div class="piece dark-piece"></div>`;
-  document.querySelector("#a7").innerHTML = dark;
-  document.querySelector("#a5").innerHTML = dark;
-  document.querySelector("#a3").innerHTML = dark;
-  document.querySelector("#a1").innerHTML = dark;
+  addPiece("#a7", "dark");
+  addPiece("#a5", "dark");
+  addPiece("#a3", "dark");
+  addPiece("#a1", "dark");
   addPiece("#b8", "dark");
   addPiece("#b6", "dark");
   addPiece("#b4", "dark");
