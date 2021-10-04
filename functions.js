@@ -12,7 +12,8 @@ function drawEmptyTable() {
 
 function drawPieces() {
     drawEmptyTable();
-    document.querySelector('.b').innerHTML=`<div class="piece light-piece"></div>`;
+    const piece = `<div class="piece light-piece"></div>`
+    document.querySelector('.b').innerHTML = piece;  
 }
 
 drawPieces();

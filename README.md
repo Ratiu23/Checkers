@@ -11,12 +11,18 @@ Checkers board game
 
 ## TODO
 
-- [ ] rules and restrictions;
-- [ ] types of checkers;
-- [ ] playing against the computer possibly;
+- [x] main board layout;
+- [ ] defining and displaying pieces;
+- [ ] moving the pieces with click.
+- [ ] implementing rules and restrictions;
+
+
+## Features
+
+- [ ] dfferent types of checkers;
+- [ ] timer for each side;
+- [ ] playing against the computer;
 - [ ] saving data from current game on server (moves or positions) for different users.
 
-Phase I:
-- [x] main board layout;
-- [x] defining and displaying pieces;
-- [ ] moving the pieces with click.
+
+
