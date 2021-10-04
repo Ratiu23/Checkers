@@ -31,7 +31,7 @@ function drawPieces() {
   addDark("b6");
   addDark("b4");
   addDark("b2");
-  //fillBottom();
+  //addDark(["a7", "a5", "a3"]);
 }
 
 function addPiece(id, color) {
