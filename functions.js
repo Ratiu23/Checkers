@@ -14,24 +14,35 @@ function drawEmptyTable() {
 
 function drawPieces() {
   drawEmptyTable();
-  addLight("h8");
-  addLight("h6");
-  addLight("h4");
-  addLight("h2");
-  addLight("g7");
-  addLight("g5");
-  addLight("g3");
-  addLight("g1");
+  addLight([
+    "h8",
+    "h6",
+    "h4",
+    "h2",
+    "g7",
+    "g5",
+    "g3",
+    "g1",
+    "f8",
+    "f6",
+    "f4",
+    "f2",
+  ]);
 
-  addDark("a7");
-  addDark("a5");
-  addDark("a3");
-  addDark("a1");
-  addDark("b8");
-  addDark("b6");
-  addDark("b4");
-  addDark("b2");
-  //addDark(["a7", "a5", "a3"]);
+  addDark([
+    "c7",
+    "c5",
+    "c3",
+    "c1",
+    "b8",
+    "b6",
+    "b4",
+    "b2",
+    "a7",
+    "a5",
+    "a3",
+    "a1",
+  ]);
 }
 
 function addPiece(id, color) {
@@ -40,11 +51,14 @@ function addPiece(id, color) {
 }
 
 function addLight(id) {
-  addPiece(id, "light");
+  id.forEach((e) => {
+    addPiece(e, "light");
+  });
 }
 
 function addDark(id) {
-  addPiece(id, "dark");
+  id.forEach((e) => {
+    addPiece(e, "dark");
+  });
 }
-
 drawPieces();
