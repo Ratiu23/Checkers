@@ -62,3 +62,12 @@ function addDark(id) {
   });
 }
 drawPieces();
+
+document.getElementById('board-layout').addEventListener("click", function(e){
+  console.info("Clicked", e.target.id);
+  addPiece(e.target.id, "light");
+});
+
+
+
+
