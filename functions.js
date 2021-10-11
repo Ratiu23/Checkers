@@ -49,6 +49,9 @@ function addPiece(id, color) {
   const piece = `<div class="piece ${color}-piece"></div>`;
   document.querySelector("#" + id).innerHTML = piece;
 }
+function removePiece(id) {
+  document.querySelector("#" + id).innerHTML = "";
+}
 
 function addLight(id) {
   id.forEach((e) => {
@@ -63,11 +66,30 @@ function addDark(id) {
 }
 drawPieces();
 
-const divs = document.querySelectorAll(".b");
+// const divs = document.querySelectorAll(".b");
 
-divs.forEach((e) => {
-  e.addEventListener("click", function (e) {
-    console.info("Clicked", e.target.id);
-    addPiece(e.target.id, "light");
-  });
+// divs.forEach((e) => {
+//   e.addEventListener("click", function (e) {
+//     console.info("Clicked", e.target.id);
+//     addPiece(e.target.id, "light");
+//   });
+// });
+
+let currentPiece;
+let currentTurn = "dark";
+// let currentTurn = "dark";
+
+document.querySelector("#board-layout").addEventListener("click", (e) => {
+  console.log("Click", e.target, currentTurn, currentPiece);
+  if (e.target.matches(".column.b") && currentPiece) {
+    removePiece(currentPiece);
+    addPiece(e.target.id, currentTurn);
+    currentPiece = undefined;
+    currentTurn = currentTurn == "light" ? "dark" : "light";
+    console.log("current turn", currentTurn);
+  } else if (e.target.matches(`.${currentTurn}-piece`)) {
+    const id = e.target.parentNode.getAttribute("id");
+    currentPiece = id;
+    console.info("Current Piece id", currentPiece);
+  }
 });
