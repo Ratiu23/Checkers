@@ -77,15 +77,46 @@ drawPieces();
 
 let currentPiece;
 let currentTurn = "dark";
+let legalMove = 0;
 // let currentTurn = "dark";
+// .charCodeAt(0);
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
   if (e.target.matches(".column.b") && currentPiece) {
-    removePiece(currentPiece);
-    addPiece(e.target.id, currentTurn);
-    currentPiece = undefined;
-    currentTurn = currentTurn == "light" ? "dark" : "light";
+    if (
+      currentTurn == "dark" &&
+      e.target.id.charCodeAt(0) == currentPiece.charCodeAt(0) + 1 &&
+      (parseInt(e.target.id.substr(1, 1)) ==
+        parseInt(currentPiece.substr(1, 1)) + 1 ||
+        parseInt(e.target.id.substr(1, 1)) ==
+          parseInt(currentPiece.substr(1, 1)) - 1)
+    ) {
+      addPiece(e.target.id, currentTurn);
+      removePiece(currentPiece);
+      legalMove = 1;
+    } else if (
+      currentTurn == "light" &&
+      e.target.id.charCodeAt(0) == currentPiece.charCodeAt(0) - 1 &&
+      (parseInt(e.target.id.substr(1, 1)) ==
+        parseInt(currentPiece.substr(1, 1)) + 1 ||
+        parseInt(e.target.id.substr(1, 1)) ==
+          parseInt(currentPiece.substr(1, 1)) - 1)
+    ) {
+      addPiece(e.target.id, currentTurn);
+      removePiece(currentPiece);
+      legalMove = 1;
+    }
+
+    if (legalMove) {
+      currentPiece = undefined;
+      currentTurn = currentTurn == "light" ? "dark" : "light";
+      legalMove = 0;
+    }
+    // removePiece(currentPiece);
+    // addPiece(e.target.id, currentTurn);
+    // currentPiece = undefined;
+    // currentTurn = currentTurn == "light" ? "dark" : "light";
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
     const id = e.target.parentNode.getAttribute("id");
