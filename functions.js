@@ -66,20 +66,9 @@ function addDark(id) {
 }
 drawPieces();
 
-// const divs = document.querySelectorAll(".b");
-
-// divs.forEach((e) => {
-//   e.addEventListener("click", function (e) {
-//     console.info("Clicked", e.target.id);
-//     addPiece(e.target.id, "light");
-//   });
-// });
-
 let currentPiece;
 let currentTurn = "dark";
 let legalMove = 0;
-// let currentTurn = "dark";
-// .charCodeAt(0);
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
