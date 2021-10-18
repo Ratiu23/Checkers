@@ -86,9 +86,6 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         legalMove = 1;
       }
       if (step == 2 && stepX == 2) {
-        if () {
-          removePiece();
-        }
         addPiece(id, currentTurn);
         removePiece(currentPiece);
         legalMove = 1;
