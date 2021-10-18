@@ -68,31 +68,37 @@ drawPieces();
 
 let currentPiece;
 let currentTurn = "dark";
-let legalMove = 0;
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
-  if (e.target.matches(".column.b") && currentPiece) {
-    if (
-      currentTurn == "dark" &&
-      e.target.id.charCodeAt(0) == currentPiece.charCodeAt(0) + 1 &&
-      (parseInt(e.target.id.substr(1, 1)) ==
-        parseInt(currentPiece.substr(1, 1)) + 1 ||
-        parseInt(e.target.id.substr(1, 1)) ==
-          parseInt(currentPiece.substr(1, 1)) - 1)
-    ) {
-      addPiece(e.target.id, currentTurn);
-      removePiece(currentPiece);
-      legalMove = 1;
+  if (e.target.matches(".column.b") && !e.target.innerHTML && currentPiece) {
+    let legalMove = 0;
+    const id = e.target.id;
+    const colNum = parseInt(id.substr(1, 1)); // column number target
+    const colNumCP = parseInt(currentPiece.substr(1, 1)); // column number current piece
+    const stepX = Math.abs(colNumCP - colNum);
+    console.log("id", id, colNum, colNumCP);
+    if (currentTurn == "dark") {
+      const step = id.charCodeAt(0) - currentPiece.charCodeAt(0);
+      if (step == 1 && stepX == 1) {
+        addPiece(id, currentTurn);
+        removePiece(currentPiece);
+        legalMove = 1;
+      }
+      if (step == 2 && stepX == 2) {
+        if () {
+          removePiece();
+        }
+        addPiece(id, currentTurn);
+        removePiece(currentPiece);
+        legalMove = 1;
+      }
     } else if (
       currentTurn == "light" &&
-      e.target.id.charCodeAt(0) == currentPiece.charCodeAt(0) - 1 &&
-      (parseInt(e.target.id.substr(1, 1)) ==
-        parseInt(currentPiece.substr(1, 1)) + 1 ||
-        parseInt(e.target.id.substr(1, 1)) ==
-          parseInt(currentPiece.substr(1, 1)) - 1)
+      id.charCodeAt(0) == currentPiece.charCodeAt(0) - 1 &&
+      (colNum == colNumCP + 1 || colNum == colNumCP - 1)
     ) {
-      addPiece(e.target.id, currentTurn);
+      addPiece(id, currentTurn);
       removePiece(currentPiece);
       legalMove = 1;
     }
@@ -100,7 +106,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     if (legalMove) {
       currentPiece = undefined;
       currentTurn = currentTurn == "light" ? "dark" : "light";
-      legalMove = 0;
+      legalMoves = 0;
     }
     // removePiece(currentPiece);
     // addPiece(e.target.id, currentTurn);
