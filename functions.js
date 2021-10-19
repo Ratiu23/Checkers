@@ -79,21 +79,24 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     const stepX = Math.abs(colNumCP - colNum);
     console.log("id", id, colNum, colNumCP);
     if (currentTurn == "dark") {
-      const step = id.charCodeAt(0) - currentPiece.charCodeAt(0);
-      if (step == 1 && stepX == 1) {
+      const stepY = id.charCodeAt(0) - currentPiece.charCodeAt(0);
+      if (stepY == 1 && stepX == 1) {
         addPiece(id, currentTurn);
         removePiece(currentPiece);
         legalMove = 1;
       }
-      const midId = String.fromCharCode(id.charCodeAt(0) - 1);
-      const a = document.getElementById(midId + (colNum + 1)).innerHTML;
-      const b = document.getElementById(midId + (colNum - 1)).innerHTML;
-      if (step == 2 && stepX == 2 && (a || b)) {
-        if (a) removePiece(midId + (colNum + 1));
-        else removePiece(midId + (colNum - 1));
-        addPiece(id, currentTurn);
-        removePiece(currentPiece);
-        legalMove = 1;
+
+      if (stepY == 2 && stepX == 2) {
+        const midId = String.fromCharCode(id.charCodeAt(0) - 1);
+        const a = document.getElementById(midId + (colNum + 1)).innerHTML;
+        const b = document.getElementById(midId + (colNum - 1)).innerHTML;
+        if (a || b) {
+          if (a) removePiece(midId + (colNum + 1));
+          else removePiece(midId + (colNum - 1));
+          addPiece(id, currentTurn);
+          removePiece(currentPiece);
+          legalMove = 1;
+        }
       }
     } else if (
       currentTurn == "light" &&
