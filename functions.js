@@ -88,11 +88,16 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
 
       if (stepY == 2 && stepX == 2) {
         const midId = String.fromCharCode(id.charCodeAt(0) - 1);
-        const a = document.getElementById(midId + (colNum + 1)).innerHTML;
-        const b = document.getElementById(midId + (colNum - 1)).innerHTML;
-        if (a || b) {
-          if (a) removePiece(midId + (colNum + 1));
-          else removePiece(midId + (colNum - 1));
+        let direction = colNum - colNumCP > 0 ? 1 : -1;
+        const middlePiece = document.getElementById(
+          midId + (colNum - direction)
+        );
+        console.log("colNum - colNumCP: ", colNumCP - colNum);
+        console.log("Colnum - direction ", colNum - direction);
+        console.log("Suppposed id " + midId + (colNum - direction));
+        console.log("Middle Piece ", middlePiece);
+        if (middlePiece.querySelector(".light-piece")) {
+          removePiece(midId + (colNum - direction));
           addPiece(id, currentTurn);
           removePiece(currentPiece);
           legalMove = 1;
