@@ -86,12 +86,8 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         legalMove = 1;
       }
       if (step == 2 && stepX == 2) {
-        const midId =             String.fromCharCode(id.charCodeAt(0) - 1) +
-        (colNum - 1);
-        console.log(
-          "id previous : " +
-
-        );
+        const midId = String.fromCharCode(id.charCodeAt(0) - 1) + (colNum - 1);
+        console.log("middle id:" + midId);
         addPiece(id, currentTurn);
         removePiece(currentPiece);
         legalMove = 1;
