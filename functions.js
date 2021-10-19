@@ -85,9 +85,12 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         removePiece(currentPiece);
         legalMove = 1;
       }
-      if (step == 2 && stepX == 2) {
-        const midId = String.fromCharCode(id.charCodeAt(0) - 1) + (colNum - 1);
-        console.log("middle id:" + midId);
+      const midId = String.fromCharCode(id.charCodeAt(0) - 1);
+      const a = document.getElementById(midId + (colNum + 1)).innerHTML;
+      const b = document.getElementById(midId + (colNum - 1)).innerHTML;
+      if (step == 2 && stepX == 2 && (a || b)) {
+        if (a) removePiece(midId + (colNum + 1));
+        else removePiece(midId + (colNum - 1));
         addPiece(id, currentTurn);
         removePiece(currentPiece);
         legalMove = 1;
