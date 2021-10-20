@@ -125,10 +125,6 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       currentPiece = undefined;
       currentTurn = currentTurn == "light" ? "dark" : "light";
     }
-    // removePiece(currentPiece);
-    // addPiece(e.target.id, currentTurn);
-    // currentPiece = undefined;
-    // currentTurn = currentTurn == "light" ? "dark" : "light";
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
     const id = e.target.parentNode.getAttribute("id");
