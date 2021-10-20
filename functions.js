@@ -92,10 +92,6 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         const middlePiece = document.getElementById(
           midId + (colNum - direction)
         );
-        console.log("colNum - colNumCP: ", colNumCP - colNum);
-        console.log("Colnum - direction ", colNum - direction);
-        console.log("Suppposed id " + midId + (colNum - direction));
-        console.log("Middle Piece ", middlePiece);
         if (middlePiece.querySelector(".light-piece")) {
           removePiece(midId + (colNum - direction));
           addPiece(id, currentTurn);
@@ -103,20 +99,31 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
           legalMove = 1;
         }
       }
-    } else if (
-      currentTurn == "light" &&
-      id.charCodeAt(0) == currentPiece.charCodeAt(0) - 1 &&
-      (colNum == colNumCP + 1 || colNum == colNumCP - 1)
-    ) {
-      addPiece(id, currentTurn);
-      removePiece(currentPiece);
-      legalMove = 1;
-    }
+    } else if (currentTurn == "light") {
+      const stepY = currentPiece.charCodeAt(0) - id.charCodeAt(0);
+      if (stepY == 1 && stepX == 1) {
+        addPiece(id, currentTurn);
+        removePiece(currentPiece);
+        legalMove = 1;
+      }
 
+      if (stepY == 2 && stepX == 2) {
+        const midId = String.fromCharCode(id.charCodeAt(0) + 1);
+        let direction = colNum - colNumCP > 0 ? 1 : -1;
+        const middlePiece = document.getElementById(
+          midId + (colNum - direction)
+        );
+        if (middlePiece.querySelector(".dark-piece")) {
+          removePiece(midId + (colNum - direction));
+          addPiece(id, currentTurn);
+          removePiece(currentPiece);
+          legalMove = 1;
+        }
+      }
+    }
     if (legalMove) {
       currentPiece = undefined;
       currentTurn = currentTurn == "light" ? "dark" : "light";
-      legalMoves = 0;
     }
     // removePiece(currentPiece);
     // addPiece(e.target.id, currentTurn);
