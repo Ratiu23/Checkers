@@ -8,7 +8,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="board-layout"></div>
+    <div class="content flow">
+        <div class="columns">
+
+            <div class="col-1">
+                <div class="col1-content">
+                    <h1 class="title-rules">Checkers Strategy and Tips</h1>
+                    <p class="title-p">
+                        Sacrifice 1 piece for 2: you can sometimes bait or force the opponent to take one of your pieces enabling you to then take 2 of their pieces.<br><br>
+                        Pieces on the sides are valuable because they can't be jumped.<br><br>
+                        Don't bunch all your pieces in the middle or you may not be able to move, and then you will lose.<br><br>
+                        Try to keep your pieces on the back row or king row for as long as possible, to keep the other player from gaining a king.<br>
+                    </p>
+                </div>
+            </div>
+
+            <div id="board-layout" class="col-2"></div>
+
+            <div class="col-3">
+                <button type="reset" class="button">Restart Game</button>
+            </div>
+        </div>
+    </div>
     <script src="functions.js"></script>  
 </body>
 </html>
+
+     
+
