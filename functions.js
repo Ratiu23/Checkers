@@ -132,3 +132,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     console.info("Current Piece id", currentPiece);
   }
 });
+
+function refreshPage(){
+  window.location.reload();
+} 
