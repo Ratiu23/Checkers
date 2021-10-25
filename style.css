@@ -44,12 +44,7 @@ body {
 }
 
 .dark-turn .dark-piece,
-.dark-turn .light-piece {
-    cursor: pointer;
-}
-
-.dark-turn .dark-piece,
-.dark-turn .light-piece {
+.light-turn .light-piece {
     cursor: pointer;
 }
 

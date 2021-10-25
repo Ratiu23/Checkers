@@ -13,11 +13,11 @@ function drawEmptyTable() {
     s += `</div>`;
   });
   document.getElementById("board-layout").innerHTML = s;
-  setCurrentTurn(currentTurn);
 }
 
 function drawPieces() {
   drawEmptyTable();
+  setCurrentTurn('dark');
   addLight([
     "h8",
     "h6",
@@ -146,13 +146,8 @@ function resetGame() {
 }
 
 function setCurrentTurn(turn) {
-    currentTurn = turn;
-    const board = document.getElementById("board-layout");
-    board.classList.add("dark-turn");
-}
-
-function setCurrentTurn(turn) {
-  currentTurn = turn;
   const board = document.getElementById("board-layout");
-  board.classList.add("dark-turn");
+  board.classList.remove(`${currentTurn}-turn`);
+  board.classList.add(`${turn}-turn`);
+  currentTurn = turn;
 }
