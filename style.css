@@ -48,6 +48,11 @@ body {
     cursor: pointer;
 }
 
+.dark-turn .dark-piece,
+.dark-turn .light-piece {
+    cursor: pointer;
+}
+
 .columns {
   display: flex;
   width: 100%;
@@ -108,3 +113,4 @@ body {
 .highlight.dark-piece {
   background-color: #6c6867;
 }
+

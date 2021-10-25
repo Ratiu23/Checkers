@@ -150,3 +150,9 @@ function setCurrentTurn(turn) {
     const board = document.getElementById("board-layout");
     board.classList.add("dark-turn");
 }
+
+function setCurrentTurn(turn) {
+  currentTurn = turn;
+  const board = document.getElementById("board-layout");
+  board.classList.add("dark-turn");
+}
