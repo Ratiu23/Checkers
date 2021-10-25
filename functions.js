@@ -1,3 +1,6 @@
+let currentPiece;
+let currentTurn = "dark";
+
 function drawEmptyTable() {
   var s = "";
   ["h", "g", "f", "e", "d", "c", "b", "a"].forEach((e, i) => {
@@ -10,6 +13,7 @@ function drawEmptyTable() {
     s += `</div>`;
   });
   document.getElementById("board-layout").innerHTML = s;
+  setCurrentTurn(currentTurn);
 }
 
 function drawPieces() {
@@ -66,8 +70,7 @@ function addDark(id) {
 }
 drawPieces();
 
-let currentPiece;
-let currentTurn = "dark";
+
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
@@ -137,4 +140,10 @@ function resetGame() {
   currentPiece = undefined;
   currentTurn = "dark";
   drawPieces();
+}
+
+function setCurrentTurn(turn) {
+    currentTurn = turn;
+    const board = document.getElementById("board-layout");
+    board.classList.add("dark-turn");
 }

@@ -43,6 +43,11 @@ body {
   min-width: 640px;
 }
 
+.dark-turn .dark-piece,
+.dark-turn .light-piece {
+    cursor: pointer;
+}
+
 .columns {
   display: flex;
   width: 100%;
