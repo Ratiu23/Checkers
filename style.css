@@ -99,3 +99,12 @@ body {
 .title-p {
   letter-spacing: 1.5px;
 }
+
+.highlight.light-piece {
+  background-color: #b8b8b8;
+  /*#d2d2d2*/
+}
+
+.highlight.dark-piece {
+  background-color: #6c6867;
+}
