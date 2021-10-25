@@ -133,6 +133,8 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
   }
 });
 
-function refreshPage(){
-  window.location.reload();
-} 
+function resetGame() {
+  currentPiece = undefined;
+  currentTurn = "dark";
+  drawPieces();
+}
