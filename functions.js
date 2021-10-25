@@ -127,8 +127,11 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     }
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
+    e.target.classList.add("highlight");
     const id = e.target.parentNode.getAttribute("id");
     currentPiece = id;
+
+    //currentPiece.classList.add("highlight");
     console.info("Current Piece id", currentPiece);
   }
 });
