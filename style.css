@@ -34,18 +34,13 @@ body {
 .dark-piece {
   background-color: #565352;
 }
-.test {
-  display: inline-block;
-}
-
 #board-layout {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   min-width: 640px;
 }
 
 .dark-turn .dark-piece,
 .light-turn .light-piece {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .columns {
@@ -102,10 +97,8 @@ body {
 
 .highlight.light-piece {
   background-color: #b8b8b8;
-  /*#d2d2d2*/
 }
 
 .highlight.dark-piece {
   background-color: #6c6867;
 }
-

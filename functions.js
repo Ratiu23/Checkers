@@ -75,8 +75,8 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
   if (e.target.matches(".column.b") && !e.target.innerHTML && currentPiece) {
     let legalMove = 0;
     const id = e.target.id;
-    const colNum = parseInt(id.substr(1, 1)); // column number target
-    const colNumCP = parseInt(currentPiece.substr(1, 1)); // column number current piece
+    const colNum = parseInt(id.substr(1, 1));
+    const colNumCP = parseInt(currentPiece.substr(1, 1));
     const stepX = Math.abs(colNumCP - colNum);
     console.log("id", id, colNum, colNumCP);
     if (currentTurn == "dark") {
