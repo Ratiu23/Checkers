@@ -13,11 +13,12 @@ function drawEmptyTable() {
     s += `</div>`;
   });
   document.getElementById("board-layout").innerHTML = s;
+  setCurrentTurn(currentTurn);
+
 }
 
 function drawPieces() {
   drawEmptyTable();
-  setCurrentTurn("dark");
   addLight([
     "h8",
     "h6",
