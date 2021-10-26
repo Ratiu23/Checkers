@@ -17,7 +17,7 @@ function drawEmptyTable() {
 
 function drawPieces() {
   drawEmptyTable();
-  setCurrentTurn('dark');
+  setCurrentTurn("dark");
   addLight([
     "h8",
     "h6",
@@ -69,8 +69,6 @@ function addDark(id) {
   });
 }
 drawPieces();
-
-
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
@@ -130,11 +128,11 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     }
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
-    e.target.classList.add("highlight");
+    e.target.matches(".highlight")
+      ? e.target.classList.remove("highlight")
+      : e.target.classList.add("highlight");
     const id = e.target.parentNode.getAttribute("id");
     currentPiece = id;
-
-    //currentPiece.classList.add("highlight");
     console.info("Current Piece id", currentPiece);
   }
 });
