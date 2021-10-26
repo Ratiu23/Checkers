@@ -13,8 +13,6 @@ function drawEmptyTable() {
     s += `</div>`;
   });
   document.getElementById("board-layout").innerHTML = s;
-  setCurrentTurn(currentTurn);
-
 }
 
 function drawPieces() {
@@ -125,7 +123,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     }
     if (legalMove) {
       currentPiece = undefined;
-      currentTurn = currentTurn == "light" ? "dark" : "light";
+      setCurrentTurn(currentTurn == "light" ? "dark" : "light");
     }
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
