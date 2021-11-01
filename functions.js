@@ -18,6 +18,12 @@ function drawEmptyTable() {
 
 function drawPieces() {
   drawEmptyTable();
+
+  addLight(["b2", "b4", "b6"]);
+
+  addDark(["g1", "g3", "g5"]);
+  return;
+  //
   addLight([
     "h8",
     "h6",
@@ -68,6 +74,14 @@ function addDark(id) {
     addPiece(e, "dark");
   });
 }
+function isKing(id, currentTurn) {
+  if (currentTurn == "dark") {
+    return id.substr(0, 1) == "h" ? 1 : 0;
+  } else if (currentTurn == "light") {
+    return id.substr(0, 1) == "a" ? 1 : 0;
+  }
+}
+
 drawPieces();
 
 document.querySelector("#board-layout").addEventListener("click", (e) => {
@@ -81,7 +95,8 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     console.log("id", id, colNum, colNumCP);
     if (currentTurn == "dark") {
       const stepY = id.charCodeAt(0) - currentPiece.charCodeAt(0);
-      if (stepY == 1 && stepX == 1) {
+      const stepYKing = currentPiece.charCodeAt(0) - id.charCodeAt(0);
+      if ((stepY == 1 && stepX == 1) || (stepYKing == 1 && stepX)) {
         addPiece(id, currentTurn);
         removePiece(currentPiece);
         legalMove = 1;
@@ -99,6 +114,13 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
           removePiece(currentPiece);
           legalMove = 1;
         }
+      }
+      if (legalMove) {
+        let King = id.substr(0, 1) == "h";
+        console.log("is King", King);
+        p = document.querySelector(`#${id} .piece`);
+        console.log(p);
+        p.classList.add("king");
       }
     } else if (currentTurn == "light") {
       const stepY = currentPiece.charCodeAt(0) - id.charCodeAt(0);
@@ -121,6 +143,13 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
           legalMove = 1;
         }
       }
+      if (legalMove) {
+        let King = id.substr(0, 1) == "a";
+        console.log("is King", King);
+        p = document.querySelector(`#${id} .piece`);
+        console.log(p);
+        p.classList.add("king");
+      }
     }
     if (legalMove) {
       currentPiece = undefined;
@@ -129,12 +158,12 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
     const isHighlighted = e.target.matches(".highlight");
-    const h = document.querySelector(".highlight")
-    if (h){
+    const h = document.querySelector(".highlight");
+    if (h) {
       h.classList.remove("highlight");
     }
 
-    if(isHighlighted) {
+    if (isHighlighted) {
       currentPiece = undefined;
     } else {
       e.target.classList.add("highlight");
@@ -142,7 +171,6 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       currentPiece = id;
       console.info("Current Piece id", currentPiece);
     }
-    
   }
 });
 

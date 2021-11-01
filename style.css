@@ -102,3 +102,14 @@ body {
 .highlight.dark-piece {
   background-color: #6c6867;
 }
+
+.king::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #2d2b29;
+  border-radius: 50%;
+  margin: 5px;
+}
