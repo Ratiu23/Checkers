@@ -21,7 +21,7 @@ function drawPieces() {
 
   addLight(["b2", "b4", "b6"]);
 
-  addDark(["g1", "g3", "g5"]);
+  addDark(["g1", "g3", "f4"]);
   return;
   //
   addLight([
@@ -74,13 +74,6 @@ function addDark(id) {
     addPiece(e, "dark");
   });
 }
-function isKing(id, currentTurn) {
-  if (currentTurn == "dark") {
-    return id.substr(0, 1) == "h" ? 1 : 0;
-  } else if (currentTurn == "light") {
-    return id.substr(0, 1) == "a" ? 1 : 0;
-  }
-}
 
 drawPieces();
 
@@ -118,9 +111,11 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       if (legalMove) {
         let King = id.substr(0, 1) == "h";
         console.log("is King", King);
-        p = document.querySelector(`#${id} .piece`);
-        console.log(p);
-        p.classList.add("king");
+        if (King) {
+          p = document.querySelector(`#${id} .piece`);
+          console.log(p);
+          p.classList.add("king");
+        }
       }
     } else if (currentTurn == "light") {
       const stepY = currentPiece.charCodeAt(0) - id.charCodeAt(0);
