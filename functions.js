@@ -128,12 +128,21 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     }
     console.log("current turn", currentTurn);
   } else if (e.target.matches(`.${currentTurn}-piece`)) {
-    e.target.matches(".highlight")
-      ? e.target.classList.remove("highlight")
-      : e.target.classList.add("highlight");
-    const id = e.target.parentNode.getAttribute("id");
-    currentPiece = id;
-    console.info("Current Piece id", currentPiece);
+    const isHighlighted = e.target.matches(".highlight");
+    const h = document.querySelector(".highlight")
+    if (h){
+      h.classList.remove("highlight");
+    }
+
+    if(isHighlighted) {
+      currentPiece = undefined;
+    } else {
+      e.target.classList.add("highlight");
+      const id = e.target.parentNode.getAttribute("id");
+      currentPiece = id;
+      console.info("Current Piece id", currentPiece);
+    }
+    
   }
 });
 
