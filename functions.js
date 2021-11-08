@@ -55,8 +55,10 @@ function drawPieces() {
   ]);
 }
 
-function addPiece(id, color) {
-  const piece = `<div class="piece ${color}-piece"></div>`;
+function addPiece(id, color, isKing) {
+  const piece = `<div class="piece ${color}-piece ${
+    isKing ? "king" : ""
+  }"></div>`;
   document.querySelector("#" + id).innerHTML = piece;
 }
 function removePiece(id) {
@@ -85,13 +87,21 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     const colNum = parseInt(id.substr(1, 1));
     const colNumCP = parseInt(currentPiece.substr(1, 1));
     const stepX = Math.abs(colNumCP - colNum);
-    console.log("id", id, colNum, colNumCP);
+    console.debug("id", id, colNum, colNumCP);
+    let isKing = !!document.querySelector(`#${currentPiece} .piece.king`);
     if (currentTurn == "dark") {
       const stepY = id.charCodeAt(0) - currentPiece.charCodeAt(0);
       const stepYKing = currentPiece.charCodeAt(0) - id.charCodeAt(0);
-      if ((stepY == 1 && stepX == 1) || (stepYKing == 1 && stepX)) {
-        addPiece(id, currentTurn);
+      console.log(
+        "steoyking, %o, current piece id %o, target piecce id %o",
+        stepYKing,
+        currentPiece.charCodeAt(0),
+        id.charCodeAt(0)
+      );
+      if (stepX == 1 && (stepY == 1 || (stepY == -1 && isKing))) {
         removePiece(currentPiece);
+        addPiece(id, currentTurn, isKing);
+
         legalMove = 1;
       }
 
