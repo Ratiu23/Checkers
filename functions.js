@@ -83,6 +83,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
   console.log("Click", e.target, currentTurn, currentPiece);
   if (e.target.matches(".column.b") && !e.target.innerHTML && currentPiece) {
     let legalMove = 0;
+    console.log("test");
     const id = e.target.id;
     const colNum = parseInt(id.substr(1, 1));
     const colNumCP = parseInt(currentPiece.substr(1, 1));
