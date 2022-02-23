@@ -19,10 +19,10 @@ function drawEmptyTable() {
 function drawPieces() {
   drawEmptyTable();
 
-  addLight(["b2", "b4", "b6"]);
+  //addLight(["b2", "b4", "b6"]);
 
-  addDark(["g1", "g3", "f4"]);
-  return;
+  //addDark(["g1", "g3", "f4"]);
+  //return;
   //
   addLight([
     "h8",
@@ -105,7 +105,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         legalMove = 1;
       }
 
-      if (stepY == 2 && stepX == 2) {
+      if (stepX == 2 && (stepY == 2 || (stepY == -2 && isKing))) {
         const midId = String.fromCharCode(id.charCodeAt(0) - 1);
         let direction = colNum - colNumCP > 0 ? 1 : -1;
         const middlePiece = document.getElementById(
@@ -129,13 +129,13 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       }
     } else if (currentTurn == "light") {
       const stepY = currentPiece.charCodeAt(0) - id.charCodeAt(0);
-      if (stepY == 1 && stepX == 1) {
-        addPiece(id, currentTurn);
+      if (stepX == 1 && (stepY == 1 || (stepY == -1 && isKing))) {
+        addPiece(id, currentTurn, isKing);
         removePiece(currentPiece);
         legalMove = 1;
       }
 
-      if (stepY == 2 && stepX == 2) {
+      if (stepX == 2 && (stepY == 2 || (stepY == -2 && isKing))) {
         const midId = String.fromCharCode(id.charCodeAt(0) + 1);
         let direction = colNum - colNumCP > 0 ? 1 : -1;
         const middlePiece = document.getElementById(
@@ -143,7 +143,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
         );
         if (middlePiece.querySelector(".dark-piece")) {
           removePiece(midId + (colNum - direction));
-          addPiece(id, currentTurn);
+          addPiece(id, currentTurn, isKing);
           removePiece(currentPiece);
           legalMove = 1;
         }
@@ -151,9 +151,11 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       if (legalMove) {
         let King = id.substr(0, 1) == "a";
         console.log("is King", King);
-        p = document.querySelector(`#${id} .piece`);
-        console.log(p);
-        p.classList.add("king");
+        if (King) {
+          p = document.querySelector(`#${id} .piece`);
+          console.log(p);
+          p.classList.add("king");
+        }
       }
     }
     if (legalMove) {
