@@ -9,7 +9,7 @@ Checkers board game
 
 ## Live Preview
 
-- [Demo](https://Ratiu23.github.io/Checkers)
+- [Demo]()
 
 ## Developer notes
 
