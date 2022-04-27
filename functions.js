@@ -19,10 +19,10 @@ function drawEmptyTable() {
 function drawPieces() {
   drawEmptyTable();
 
-  addLight(["f2", "f4", "f6"]);
+  /*addLight(["f2", "f4", "f6"]);
 
-  addDark(["c3", "c5", "c7"]);
-  /*addLight([
+  addDark(["c3", "c5", "c7"]);*/
+  addLight([
     "h8",
     "h6",
     "h4",
@@ -50,7 +50,7 @@ function drawPieces() {
     "a5",
     "a3",
     "a1",
-  ]);*/
+  ]);
   return;
 }
 
