@@ -19,12 +19,10 @@ function drawEmptyTable() {
 function drawPieces() {
   drawEmptyTable();
 
-  //addLight(["b2", "b4", "b6"]);
+  addLight(["f2", "f4", "f6"]);
 
-  //addDark(["g1", "g3", "f4"]);
-  //return;
-  //
-  addLight([
+  addDark(["c3", "c5", "c7"]);
+  /*addLight([
     "h8",
     "h6",
     "h4",
@@ -52,7 +50,8 @@ function drawPieces() {
     "a5",
     "a3",
     "a1",
-  ]);
+  ]);*/
+  return;
 }
 
 function addPiece(id, color, isKing) {
@@ -90,6 +89,7 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
     const stepX = Math.abs(colNumCP - colNum);
     console.debug("id", id, colNum, colNumCP);
     let isKing = !!document.querySelector(`#${currentPiece} .piece.king`);
+    let wasKing;
     if (currentTurn == "dark") {
       const stepY = id.charCodeAt(0) - currentPiece.charCodeAt(0);
       const stepYKing = currentPiece.charCodeAt(0) - id.charCodeAt(0);
@@ -107,15 +107,23 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       }
 
       if (stepX == 2 && (stepY == 2 || (stepY == -2 && isKing))) {
+        if (stepY == 2 && isKing) {
+          isKing = false;
+          wasKing = true;
+        }
         const midId = String.fromCharCode(id.charCodeAt(0) - 1);
+        const midKId = String.fromCharCode(id.charCodeAt(0) + 1);
+        console.log(
+          "id piesa mijloc nu " + midId + " id piesa mijloc rege " + midKId
+        );
         let direction = colNum - colNumCP > 0 ? 1 : -1;
         const middlePiece = document.getElementById(
-          midId + (colNum - direction)
+          (isKing ? midKId : midId) + (colNum - direction)
         );
         if (middlePiece.querySelector(".light-piece")) {
-          removePiece(midId + (colNum - direction));
-          addPiece(id, currentTurn);
+          removePiece((isKing ? midKId : midId) + (colNum - direction));
           removePiece(currentPiece);
+          addPiece(id, currentTurn, wasKing ? wasKing : isKing);
           legalMove = 1;
         }
       }
@@ -137,15 +145,23 @@ document.querySelector("#board-layout").addEventListener("click", (e) => {
       }
 
       if (stepX == 2 && (stepY == 2 || (stepY == -2 && isKing))) {
+        if (stepY == 2 && isKing) {
+          isKing = false;
+          wasKing = true;
+        }
         const midId = String.fromCharCode(id.charCodeAt(0) + 1);
+        const midKId = String.fromCharCode(id.charCodeAt(0) - 1);
+        console.log(
+          "id piesa mijloc nu " + midId + " id piesa mijloc rege " + midKId
+        );
         let direction = colNum - colNumCP > 0 ? 1 : -1;
         const middlePiece = document.getElementById(
-          midId + (colNum - direction)
+          (isKing ? midKId : midId) + (colNum - direction)
         );
         if (middlePiece.querySelector(".dark-piece")) {
-          removePiece(midId + (colNum - direction));
-          addPiece(id, currentTurn, isKing);
+          removePiece((isKing ? midKId : midId) + (colNum - direction));
           removePiece(currentPiece);
+          addPiece(id, currentTurn, wasKing ? wasKing : isKing);
           legalMove = 1;
         }
       }
